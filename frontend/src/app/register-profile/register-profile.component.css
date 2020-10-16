@@ -1,9 +1,9 @@
-/* Sections for signup screen  */
-#main-signup {
+/* Sections for profile screen  */
+#main-profile {
     height: 100%;
 }
 
-#main-signup-left {
+#main-profile-left {
     width: 50%;
     height: 100%;
     display: inline;
@@ -14,7 +14,7 @@
     background-size: contain;
 }
 
-#main-signup-right {
+#main-profile-right {
     width: 50%;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -46,17 +46,16 @@ label {
     color: grey;
 }
 
-#form-input-group-signup {
+#form-input-group-profile {
     width: 80%
 }
 
-#form-input-group-signup input {
+#form-input-group-profile input {
     width: 100%;
     padding: 5px;
     border: 0;
     outline: 0;
     border-bottom: 1px solid grey;
-
 }
 
 input[type=text]:focus {
@@ -64,24 +63,26 @@ input[type=text]:focus {
     border-bottom: 2px solid rgb(255, 79, 79);
 }
 
-#form-input-username-signup,
-#form-input-password-signup,
-#form-input-sign-in-button-signup {
+select {
+    width: 100%;
+    padding: 5px 0px;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid grey;
+}
+
+#form-input-height-profile,
+#form-input-weight-profile,
+#form-input-goal-profile {
     padding: 30px 30px 0px 30px;
 }
 
-#form-input-forgot-password-signup {
-    padding: 12px 30px;
-    text-align: end;
-    font-size: 12px;
-}
-
-#form-input-sign-in-button-signup {
+#form-input-complete-profile {
     padding: 60px 30px 10px 30px;
     text-align: center;
 }
 
-#signup {
+#complete {
     background-color: rgb(219, 84, 84);
     width: 50%;
     height: 50px;
@@ -98,17 +99,17 @@ input[type=text]:focus {
 
 /* media queries */
 @media screen and (max-width: 768px) {
-    #main-signup-left {
+    #main-profile-left {
         width: 0%;
     }
 
-    #main-signup-right {
+    #main-profile-right {
         width: 100%;
         position: relative;
         z-index: 2;
     }
 
-    #main-signup-right::after {
+    #main-profile-right::after {
         position: absolute;
         z-index: -1;
         background-image: url('../../assets/images/RollerSkatingDoodle.svg');
