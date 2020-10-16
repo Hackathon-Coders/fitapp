@@ -1,0 +1,108 @@
+/* Sections for signup screen  */
+#main-signup {
+    height: 100%;
+}
+
+#main-signup-left {
+    width: 50%;
+    height: 100%;
+    display: inline;
+    float: left;
+    background-image: url('../../assets/images/RollerSkatingDoodle.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#main-signup-right {
+    width: 50%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#app-name {
+    margin: 30px 50px;
+    font-size: 28px;
+    letter-spacing: 10px;
+    text-align: center;
+}
+
+#app-name p {
+    font-size: 12px;
+    letter-spacing: 6px;
+}
+
+/* Input form elements */
+
+label {
+    display: block;
+    margin: 15px 0px;
+    font-size: 14px;
+    color: grey;
+}
+
+#form-input-group-signup {
+    width: 80%
+}
+
+#form-input-group-signup input {
+    width: 100%;
+    padding: 5px;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid grey;
+
+}
+
+input[type=text]:focus {
+    outline: 1px rgb(105, 128, 226);
+    border-bottom: 2px solid rgb(255, 79, 79);
+}
+
+#form-input-username-signup,
+#form-input-password-signup,
+#form-input-sign-in-button-signup {
+    padding: 30px 30px 0px 30px;
+}
+
+#form-input-forgot-password-signup {
+    padding: 12px 30px;
+    text-align: end;
+    font-size: 12px;
+}
+
+#form-input-sign-in-button-signup {
+    padding: 60px 30px 10px 30px;
+    text-align: center;
+}
+
+#signup {
+    background-color: rgb(219, 84, 84);
+    width: 50%;
+    height: 50px;
+    color: white;
+    border-radius: 30px;
+    border-style: none;
+}
+
+#form-create {
+    text-align: center;
+    font-size: 12px;
+    margin: 10px 0px 50px 0px;
+}
+
+/* media queries */
+@media screen and (max-width: 768px) {
+    #main-signup-left {
+        width: 0%;
+    }
+
+    #main-signup-right {
+        width: 100%
+    }
+}
