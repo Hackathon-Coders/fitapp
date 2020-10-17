@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import{User} from '../model/user';
-import{LoginService} from '../service/login.service';
-import{Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { User } from '../model/user';
+import { LoginService } from '../service/login.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register-profile',
@@ -10,39 +10,43 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./register-profile.component.css']
 })
 export class RegisterProfileComponent implements OnInit {
-  user:User={
-    id:"",
+  user: User = {
+    id: "",
     username: "",
-    password : "",
+    password: "",
     age: "",
     height: "",
-    weight:0,
-    fitnessgoals:"",
+    weight: 0,
+    fitnessgoals: "",
     targetweight: "",
-    token:"",
+    token: "",
   };
-  constructor(private loginService:LoginService,private route:Router,private snackBar: MatSnackBar) { }
+  constructor(private loginService: LoginService, private route: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+
   }
 
-  save(){
- this.loginService.userProfile(this.user).subscribe(data=>
-    { if(data!=null){this.route.navigate(['user/dashboard']);  }
-    else{
-      this.openSnackBar();
-    }
-});
+  save() {
+    this.loginService.userProfile(this.user).subscribe(data => {
+      if (data != null) {
+        this.loginService.setUser(data[0]);
+        this.route.navigate(['user/dashboard']);
+      }
+      else {
+        this.openSnackBar();
+      }
+    });
 
   }
   durationInSeconds = 5;
 
 
-openSnackBar() {
-  // this.snackBar.openFromComponent(PizzaPartyComponent, {
-  //   duration: this.durationInSeconds * 1000,
-  // });
-}
+  openSnackBar() {
+    // this.snackBar.openFromComponent(PizzaPartyComponent, {
+    //   duration: this.durationInSeconds * 1000,
+    // });
+  }
 
 
 }

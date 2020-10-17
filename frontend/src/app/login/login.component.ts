@@ -33,8 +33,9 @@ tokenRecieved:any;
     this.loginService.login(this.user).subscribe(data=>{
   if(data!=null   && data[0].token!= null && data[0].password == this.user.password){
     console.log(data,data[0].password == "ak");
-    this.token=data[0].token;
+    this.token=data[0].id;
     localStorage.setItem("token",this.token);
+    this.loginService.setUser(data[0]);
 this.route.navigate(['user/dashboard',{ tokenId: this.token }]);
   }
   else{
