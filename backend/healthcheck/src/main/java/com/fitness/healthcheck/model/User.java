@@ -17,7 +17,10 @@ package com.fitness.healthcheck.model;
 		public String age;
 		public String height;
 		public String fitnessgoals;
+		public String weight;
 		public String targetweight;
+		
+		
 		public String getId() {
 			return id;
 		}
@@ -59,6 +62,12 @@ package com.fitness.healthcheck.model;
 		}
 		public void setTargetweight(String targetweight) {
 			this.targetweight = targetweight;
+		}
+		public String getWeight() {
+			return weight;
+		}
+		public void setWeight(String weight) {
+			this.weight = weight;
 		}
 		
 		

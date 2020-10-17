@@ -21,10 +21,10 @@ public class UserRegImpl {
 	@Autowired
 	private UserRepository userrepo;
 	
-	public List<User> displayUsers()
+	public Optional<User> displayUsers(String id)
 	{
-		List<User> userlist=new ArrayList<User>();
-		userlist=userrepo.findAll();
+		Optional<User> userlist;
+		userlist=userrepo.findById(id);
 		return userlist;
 		
 		
@@ -43,8 +43,11 @@ public class UserRegImpl {
 		User user=userrepo.checkUser(username, password);
 		
 		if(user!=null)
-			
+		{
 			result= user.id;
+			
+		
+		}
 		else
 			result= "failed";
 		return result;
