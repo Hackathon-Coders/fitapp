@@ -18,8 +18,10 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import {MatIconModule} from '@angular/material/icon'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 registerLocaleData(en);
+
 
 @NgModule({
   declarations: [
@@ -38,8 +40,15 @@ registerLocaleData(en);
     MatSidenavModule,
     FormsModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule,
   ],
+  // exports:[
+  //   PizzaPartyComponent
+  // ],
+
+  // entryComponents: [ PizzaPartyComponent],
+
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })

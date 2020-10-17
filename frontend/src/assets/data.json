@@ -1,0 +1,12 @@
+[  
+     { "id":1,
+    "username": "aravind",
+    "password" : "ak",
+    "age": "25",
+    "height": "190",
+    "weight":100,
+    "fitnessgoals":"String",
+    "targetweight": "45",
+    "token":"abcde"
+    }
+]

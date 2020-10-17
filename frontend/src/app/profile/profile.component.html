@@ -5,25 +5,25 @@
         </div>
         <div class="field">
             <label for="username">Username</label>
-            <input type="text">
+            <input   [(ngModel)]="this.user.username"  type="text">
         </div>
         <div class="field">
             <label for="username">Password</label>
-            <input type="text">
+            <input [(ngModel)]="this.user.password"  type="text">
         </div>
         <div class="field">
             <label for="username">Goal</label>
-            <select name="goal" id="goal">
+            <select [(ngModel)]="this.user.fitnessgoals"  name="goal" id="goal">
                 <option value="1" selected>Weight Loss</option>
                 <option value="2">Weight Gain</option>
             </select>
         </div>
         <div class="field">
             <label for="username">Target weight</label>
-            <input type="text">
+            <input   [(ngModel)]="this.user.targetweight" type="text">
         </div>
         <div class="field center">
-            <button id="update-profile">Update profile</button>
+            <button  (click)="submit()" id="update-profile">Update profile</button>
         </div>
     </div>
 </div>
