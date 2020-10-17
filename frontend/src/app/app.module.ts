@@ -19,6 +19,8 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import {MatIconModule} from '@angular/material/icon'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 registerLocaleData(en);
 
@@ -41,6 +43,8 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatSnackBarModule,
   ],
   // exports:[
@@ -49,7 +53,8 @@ registerLocaleData(en);
 
   // entryComponents: [ PizzaPartyComponent],
 
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, MatDatepickerModule,
+    MatNativeDateModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

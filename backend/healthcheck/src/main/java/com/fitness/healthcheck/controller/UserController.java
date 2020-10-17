@@ -43,5 +43,16 @@ public class UserController {
 		
 	}
 	
+	@PostMapping("/login")
+	public String validateLogin(@RequestBody User user)
+	{
+		
+		String username=user.username;
+		String password=user.password;
+		//System.out.println(username);
+		String res=userservice.checkUser(username, password);
+		return res;
+	}
+	
 
 }
