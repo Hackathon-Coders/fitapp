@@ -2,14 +2,21 @@ package com.fitness.healthcheck.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import javax.xml.ws.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.yaml.snakeyaml.tokens.Token.ID;
 
 import com.fitness.healthcheck.model.User;
 import com.fitness.healthcheck.repository.UserRepository;
@@ -26,12 +33,11 @@ public class UserController {
 	//private UserRepository ur;
 	
 	@GetMapping("/users")
-	public List<User> showUsers()
+	public Optional<User> showUsers(String id)
 	{
-		System.out.println("into controller");
-		List<User> userlist=new ArrayList<User>();
 		
-		userlist=userservice.displayUsers();
+		
+		Optional userlist=userservice.displayUsers(id);
 		return userlist;
 		
 	}
@@ -41,17 +47,25 @@ public class UserController {
 		User userobj=userservice.saveUsers(user);
 		return userobj;
 		
+		
 	}
 	
 	@PostMapping("/login")
-	public String validateLogin(@RequestBody User user)
+	public ResponseEntity<Optional> validateLogin(@RequestBody User user)
 	{
 		
 		String username=user.username;
 		String password=user.password;
+		Response response;
 		//System.out.println(username);
+		User userob=new User();
 		String res=userservice.checkUser(username, password);
-		return res;
+		Optional userlist=userservice.displayUsers(res);
+			return new ResponseEntity<Optional>(userlist,HttpStatus.OK);
+			
+		
+		
+		
 	}
 	
 
