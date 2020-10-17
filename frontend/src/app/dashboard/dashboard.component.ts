@@ -12,4 +12,15 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  overlayOn(name) {
+    document.getElementById("overlay-"+name).style.display = "block";
+  }
+
+  overlayOff() {
+    document.getElementById("overlay-weight").style.display = "none";
+    document.getElementById("overlay-exercise").style.display = "none";
+    document.getElementById("overlay-calories").style.display = "none";
+    document.getElementById("overlay-running").style.display = "none";
+  }
+
 }

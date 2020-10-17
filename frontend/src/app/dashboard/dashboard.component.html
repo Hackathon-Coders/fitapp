@@ -29,23 +29,88 @@
         <p>Daily stats <span style="font-size: 16px;">(click on each card to log)</span></p>
     </div>
     <div id="log">
-        <div id="weight" class="card">
+        <div id="weight" class="card" (click)="overlayOn('weight')">
             <p><span style="font-size: 32px;">50 </span>Kg</p>
         </div>
-        <div id="calories" class="card">
+        <div id="calories" class="card" (click)="overlayOn('calories')">
             <mat-icon>restaurant</mat-icon>
             <p><span style="font-size: 32px;">1350 </span>cal</p>
         </div>
-        <div id="Exercise" class="card">
+        <div id="Exercise" class="card" (click)="overlayOn('exercise')">
             <mat-icon>fitness_center</mat-icon>
             <p><span style="font-size: 32px;">30 </span>mins</p>
         </div>
-        <div id="Running/Walking" class="card">
+        <div id="Running/Walking" class="card" (click)="overlayOn('running')">
             <mat-icon> directions_run</mat-icon>
             <p><span style="font-size: 32px;">12 </span>kms</p>
         </div>
     </div>
     <div id="charts">
 
+    </div>
+</div>
+
+<div id="overlay-weight" class="overlay-container">
+    <!-- <div style="float: right; font-size: 48px;" (click)=overlayOff()>X</div> -->
+    <div class="card-overlay">
+        <label for="weight">Weight (kg)</label>
+        <input type="number" placeholder="Enter weight in kg">
+        <!-- <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
+            <input matInput [matDatepicker]="dp3" disabled class="date-picker">
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </div> -->
+        <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
+            <button id="add">Add</button>
+            <button id="close" (click)="overlayOff()">Close</button>
+        </div>
+    </div>
+</div>
+
+<div id="overlay-calories" class="overlay-container">
+    <div class="card-overlay">
+        <label for="calories">Calories (cal)</label>
+        <input type="number" placeholder="Enter calories">
+        <!-- <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
+                <input matInput [matDatepicker]="dp3" disabled class="date-picker">
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </div> -->
+        <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
+            <button id="add">Add</button>
+            <button id="close" (click)="overlayOff()">Close</button>
+        </div>
+    </div>
+</div>
+
+<div id="overlay-exercise" class="overlay-container">
+    <div class="card-overlay">
+        <label for="exercise">Exercise (mins)</label>
+        <input type="number" placeholder="Enter minutes of exercise">
+        <!-- <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
+                <input matInput [matDatepicker]="dp3" disabled class="date-picker">
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </div> -->
+        <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
+            <button id="add">Add</button>
+            <button id="close" (click)="overlayOff()">Close</button>
+        </div>
+    </div>
+</div>
+
+<div id="overlay-running" class="overlay-container">
+    <div class="card-overlay">
+        <label for="running">Walking/running (km)</label>
+        <input type="number" placeholder="Enter minutes of running">
+        <!-- <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
+                <input matInput [matDatepicker]="dp3" disabled class="date-picker">
+                <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+            </div> -->
+        <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
+            <button id="add">Add</button>
+            <button id="close" (click)="overlayOff()">Close</button>
+        </div>
     </div>
 </div>
