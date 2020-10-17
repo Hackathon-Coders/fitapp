@@ -44,7 +44,7 @@ public class UserRegImpl {
 		
 		if(user!=null)
 			
-			result= "success";
+			result= user.id;
 		else
 			result= "failed";
 		return result;
