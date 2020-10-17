@@ -1,0 +1,96 @@
+#dashboard {
+    width: 80%
+}
+
+#header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+    font-size: 32px;
+    background-color: lightslategray;
+    color: white;
+}
+
+.title {
+    margin: 30px 50px;
+    font-size: 20px;
+}
+
+#daily-goals {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    box-shadow: 4px 3px 8px 1px #969696;
+    -webkit-box-shadow: 4px 3px 8px 1px #969696;
+    margin: 30px 50px 50px 50px;
+}
+
+#log {
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    box-shadow: 4px 3px 8px 1px #969696;
+    -webkit-box-shadow: 4px 3px 8px 1px #969696;
+    margin: 50px;
+}
+
+#charts {
+    /* height: 300px; */
+}
+
+.card {
+    height: 135px;
+    min-width: 135px;
+    max-width: auto;
+    margin: 30px 30px;
+    padding: 10px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    box-shadow: 4px 3px 8px 1px #969696;
+    -webkit-box-shadow: 4px 3px 8px 1px #969696;
+    transition: transform .2s;
+    
+}
+
+mat-icon {
+    font-size: 24px;
+}
+
+.card:hover {
+    transform: scale(1.15);
+    cursor: pointer;
+    background-color: rgb(255, 78, 82);
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        min-height: 100px;
+        max-height: fit-content;
+        min-width: 100px;
+        max-width: fit-content;
+        margin: 30px 30px;
+        padding: 10px;
+        border-radius: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        flex-direction: column;
+        box-shadow: 4px 3px 8px 1px #969696;
+        -webkit-box-shadow: 4px 3px 8px 1px #969696;
+        transition: transform .2s;
+    }
+
+    #dashboard {
+        width: 100%
+    }
+}
