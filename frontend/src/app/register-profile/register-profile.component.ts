@@ -3,6 +3,7 @@ import { User } from '../model/user';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserResponse } from '../model/userResponse';
 
 @Component({
   selector: 'app-register-profile',
@@ -21,16 +22,28 @@ export class RegisterProfileComponent implements OnInit {
     targetweight: "",
     token: "",
   };
+  userDetails:UserResponse;
+  data:any;
   constructor(private loginService: LoginService, private route: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-
+    this.data = this.loginService.checkUser();
+    if (this.data != "401") {
+      this.userDetails = this.data;
+    }
+    else {
+      alert("Please Login Again");
+      this.route.navigate(['']);
+    }
+    
+this.user.id=this.userDetails.user.id;
   }
 
   save() {
     this.loginService.userProfile(this.user).subscribe(data => {
       if (data != null) {
-        this.loginService.setUser(data[0]);
+        this.userDetails=data;
+        this.loginService.setUser(this.userDetails);
         this.route.navigate(['user/dashboard']);
       }
       else {

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { User } from '../model/user';
+import { UserResponse } from '../model/userResponse';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ import { User } from '../model/user';
 export class LoginService {
   url: string = "../../assets/data.json";
 
-  userDetails: User;
+  userDetails: UserResponse;
 
   constructor(private http: HttpClient) { }
 
@@ -16,19 +18,19 @@ export class LoginService {
     return this.userDetails;
   }
 
-  setUser(user: User) {
+  setUser(user: UserResponse) {
     this.userDetails = user;
   }
 
-  login(user: User) {
-    return this.http.post(this.url, user);
+  login(user: User):Observable<UserResponse> {
+    return this.http.post<UserResponse>(this.url, user);
     //    return this.http.get(this.url);
 
 
   }
-  userProfile(user: User) {
+  userProfile(user: User):Observable<UserResponse> {
 
-    return this.http.post(this.url, user);
+    return this.http.put<UserResponse>(this.url, user);
   }
   updateuserProfile(user: User) {
     if (localStorage.getItem("token") != null) {

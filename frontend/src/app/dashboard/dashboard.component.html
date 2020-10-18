@@ -30,19 +30,19 @@
     </div>
     <div id="log">
         <div id="weight" class="card" (click)="overlayOn('weight')">
-            <p><span style="font-size: 32px;">{{this.tracker.weight}} </span>Kg</p>
+            <p><span style="font-size: 32px;">{{this.userWeight.weight}} </span>Kg</p>
         </div>
         <div id="calories" class="card" (click)="overlayOn('calories')">
             <mat-icon>restaurant</mat-icon>
-            <p><span   style="font-size: 32px;">{{this.tracker.foodCalories}} </span>cal</p>
+            <p><span   style="font-size: 32px;">{{this.userCalories.calories}} </span>cal</p>
         </div>
         <div id="Exercise" class="card" (click)="overlayOn('exercise')">
             <mat-icon>fitness_center</mat-icon>
-            <p><span style="font-size: 32px;">{{this.tracker.exercise}} </span>mins</p>
+            <p><span style="font-size: 32px;">{{this.userExercise.hours}} </span>mins</p>
         </div>
         <div id="Running/Walking" class="card" (click)="overlayOn('running')">
             <mat-icon> directions_run</mat-icon>
-            <p><span style="font-size: 32px;">{{this.tracker.walking}} </span>kms</p>
+            <p><span style="font-size: 32px;">{{this.userWalking.hours}} </span>kms</p>
         </div>
     </div>
     <div id="charts">
@@ -54,7 +54,7 @@
     <!-- <div style="float: right; font-size: 48px;" (click)=overlayOff()>X</div> -->
     <div class="card-overlay">
         <label for="weight">Weight (kg)</label>
-        <input  [(ngModel)]="this.tracker.weight"  type="number" placeholder="Enter weight in kg">
+        <input  [(ngModel)]="this.newWeight.weight"  type="number" placeholder="Enter weight in kg">
         <!-- <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
             <input matInput [matDatepicker]="dp3" disabled class="date-picker">
             <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
@@ -70,7 +70,7 @@
 <div id="overlay-calories" class="overlay-container">
     <div class="card-overlay">
         <label for="calories">Calories (cal)</label>
-        <input  [(ngModel)]="this.tracker.foodCalories" type="number" placeholder="Enter calories">
+        <input  [(ngModel)]="this.newFoodCalories.calories" type="number" placeholder="Enter calories">
         <!-- <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
                 <input matInput [matDatepicker]="dp3" disabled class="date-picker">
                 <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
@@ -86,7 +86,7 @@
 <div id="overlay-exercise" class="overlay-container">
     <div class="card-overlay">
         <label for="exercise">Exercise (mins)</label>
-        <input [(ngModel)]="this.tracker.exercise"  type="number" placeholder="Enter minutes of exercise">
+        <input [(ngModel)]="this.newExercise.hours"  type="number" placeholder="Enter minutes of exercise">
         <!-- <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
                 <input matInput [matDatepicker]="dp3" disabled class="date-picker">
                 <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
@@ -102,7 +102,7 @@
 <div id="overlay-running" class="overlay-container">
     <div class="card-overlay">
         <label for="running">Walking/running (km)</label>
-        <input [(ngModel)]="this.tracker.walking" type="number" placeholder="Enter minutes of running">
+        <input [(ngModel)]="this.newWalking.hours" type="number" placeholder="Enter minutes of running">
         <!-- <div style="width: 100%; display: flex; align-items: flex-end; justify-content: center; flex-direction: row;">
                 <input matInput [matDatepicker]="dp3" disabled class="date-picker">
                 <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
