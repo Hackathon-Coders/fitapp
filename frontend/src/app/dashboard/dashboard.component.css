@@ -9,8 +9,9 @@
     align-items: center;
     padding: 0px 50px;
     font-size: 32px;
-    background-color: lightslategray;
+    background-color: rgba(224, 48, 81, 1);
     color: white;
+
 }
 
 .title {
