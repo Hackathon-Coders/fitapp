@@ -1,9 +1,6 @@
-export interface Exercise{
-    id: String,
-    userid: String,
-    description: String,
-    hours: String,
-    date: Date,
-
-    
+export class Exercise {
+  id: String;
+  userid: String;
+  hours: String;
+  date: Date;
 }

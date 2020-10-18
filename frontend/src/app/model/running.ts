@@ -1,9 +1,6 @@
-export interface Running{
-
-    id: String,
-    userid: String,
-    description: String,
-    hours: String,
-    date: Date,
-
+export class Running {
+  id: String;
+  userid: String;
+  hours: String;
+  date: Date;
 }

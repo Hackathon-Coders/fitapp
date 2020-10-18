@@ -12,18 +12,20 @@
         <div id="form-input-group-signup">
             <div id="form-input-username-signup">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" autocomplete="off">
+                <input [(ngModel)]="this.user.username" type="text" name="username" id="username" autocomplete="off">
             </div>
             <div id="form-input-password-signup">
                 <label for="password">Password</label>
-                <input type="text" name="password" id="password" autocomplete="off">
+                <input [(ngModel)]=" this.user.password" type="password" name="password" id="password"
+                    autocomplete="off">
             </div>
             <div id="form-input-password-signup">
                 <label for="password">Confirm password</label>
-                <input type="text" name="confirm-password" id="confirm-password" autocomplete="off">
+                <input [(ngModel)]="this.confirmPassword" (change)="passwordMatchCheck()" type="password"
+                    name="confirm-password" id="confirm-password" autocomplete="off">
             </div>
             <div id="form-input-sign-in-button-signup">
-                <button id="signup" routerLink="profile">Sign up</button>
+                <button id="signup" [disabled]="this.disableSignup" (click)="signUp()">Sign up</button>
             </div>
             <div id="form-create">
                 <span>Already have an account? Login <a href="#">here</a></span>

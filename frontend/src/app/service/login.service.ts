@@ -1,18 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpResponse,
+} from '@angular/common/http';
 import { User } from '../model/user';
 import { UserResponse } from '../model/userResponse';
 import { Observable } from 'rxjs';
 
+const url_login = 'http://localhost:8080/healthcheck/login';
+const url_register = 'http://localhost:8080/healthcheck/register';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-  url: string = "../../assets/data.json";
+  constructor(private http: HttpClient) {}
 
-  userDetails: UserResponse;
+  url: string = '../../assets/data.json';
 
-  constructor(private http: HttpClient) { }
+  /* USER DETAILS */
+  userDetails: UserResponse = new UserResponse();
 
   getUser() {
     return this.userDetails;
@@ -22,34 +31,34 @@ export class LoginService {
     this.userDetails = user;
   }
 
-  login(user: User):Observable<UserResponse> {
-    return this.http.post<UserResponse>(this.url, user);
-    //    return this.http.get(this.url);
-
-
+  /* API CALLS */
+  login(user: User): Observable<UserResponse> {
+    //return this.http.post<UserResponse>(this.url, user);
+    return this.http.post<UserResponse>(url_login, user);
   }
-  userProfile(user: User):Observable<UserResponse> {
 
-    return this.http.put<UserResponse>(this.url, user);
+  registerUser(user: User): Observable<UserResponse> {
+    return this.http.post<UserResponse>(url_register, user);
   }
-  updateuserProfile(user: User) {
-    if (localStorage.getItem("token") != null) {
+
+  /* updateuserProfile(user: User) {
+    if (localStorage.getItem('token') != null) {
       return this.http.put(this.url, user);
+    } else {
+      return '401';
     }
-    else {
-      return "401";
-    }
-  }
+  } */
+
   checkUser() {
-    if (localStorage.getItem("token") != null && this.getUser() != null) {
-      return this.userDetails;
+    console.log(this.getUser(), 'this.getUser()');
+    if (localStorage.getItem('token') != null && this.getUser().user != null) {
+      return this.getUser();
+    } else {
+      return '401';
     }
-    else {
-      return "401";
-    }
-  }
-  getUserDetails(id: String) {
-    return this.http.get(this.url + id);
   }
 
+  /* getUserDetails(id: String) {
+    return this.http.get(this.url + id);
+  } */
 }

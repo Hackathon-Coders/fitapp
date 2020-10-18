@@ -1,8 +1,6 @@
-export interface Weight{
-    id: String,
-    userid: String,
-    description: String,
-    weight: String,
-    date: Date,
-
+export class Weight {
+  id: String;
+  userid: String;
+  weight: String;
+  date: Date;
 }

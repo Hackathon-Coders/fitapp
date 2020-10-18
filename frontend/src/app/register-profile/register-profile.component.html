@@ -9,25 +9,26 @@
             </h3>
         </div>
         <div id="form-input-group-profile">
-            <mat-progress-bar mode="determinate" value="10"></mat-progress-bar>
+            <!-- <mat-progress-bar mode="determinate" value="10"></mat-progress-bar> -->
             <div id="form-input-height-profile">
                 <label for="username">Height (cm)</label>
-                <input  [(ngModel)]="this.user.height" type="number" name="height" id="height" autocomplete="off">
+                <input [(ngModel)]="this.user.height" type="number" name="height" id="height" autocomplete="off">
             </div>
             <div id="form-input-weight-profile">
                 <label for="password">Weight (Kg)</label>
-                <input   [(ngModel)]="this.user.weight" type="number" name="weight" id="weight" autocomplete="off">
+                <input [(ngModel)]="this.user.weight" type="number" name="weight" id="weight" autocomplete="off">
             </div>
             <div id="form-input-goal-profile">
                 <label for="goal">Goal</label>
-                <select   [(ngModel)]="this.user.fitnessgoals" name="goal" id="goal">
+                <select [(ngModel)]="this.user.fitnessgoals" name="goal" id="goal">
                     <option value="1" selected>Weight Loss</option>
                     <option value="2">Weight Gain</option>
                 </select>
             </div>
             <div id="form-input-weight-profile">
-                <label   [(ngModel)]="this.user.targetweight" for="target-weight">Target weight (Kg)</label>
-                <input type="number" name="target-weight" id="target-weight" autocomplete="off">
+                <label name="targetweight">Target weight (Kg)</label>
+                <input [(ngModel)]="this.user.targetweight" type="number" name="target-weight" id="target-weight"
+                    autocomplete="off">
             </div>
             <div id="form-input-complete-profile">
                 <button (click)="save()" id="complete" routerLink="dashboard">Complete Profile</button>

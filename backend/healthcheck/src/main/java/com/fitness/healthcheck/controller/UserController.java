@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,7 +37,8 @@ import com.fitness.healthcheck.service.UserRegImpl;
 import com.fitness.healthcheck.service.WeightServiceImpl;
 
 @RestController
-@RequestMapping("/healthcheck")
+@RequestMapping("/healthcheck")	
+@CrossOrigin(maxAge = 6000)
 public class UserController {
 	
 	
@@ -59,6 +61,7 @@ public class UserController {
 	
 	//private UserRepository ur;
 	
+	@CrossOrigin
 	@GetMapping("/users")
 	public Optional<User> showUsers(String id)
 	{
@@ -68,6 +71,8 @@ public class UserController {
 		return userlist;
 		
 	}
+	
+	@CrossOrigin
 	@PostMapping("/register")
 	public UserResponse saveUser(@RequestBody User user) {
 		
@@ -83,8 +88,9 @@ public class UserController {
 		
 	}
 	
+	@CrossOrigin
 	@PostMapping("/calories")
-	public UserResponse saveCalories(@RequestBody Calories calorie)
+	public Calories saveCalories(@RequestBody Calories calorie)
 	{
 		//System.out.println(calorie.getDate());
 		Calories cal=calservice.enterCalories(calorie);
@@ -94,11 +100,13 @@ public class UserController {
 		else
 			userresponse.setResponseCode("300");
 		
-		return userresponse;
+		return cal;
 		
 	}
+	
+	@CrossOrigin
 	@PostMapping("/weight")
-	public UserResponse saveWeight(@RequestBody Weight weight)
+	public Weight saveWeight(@RequestBody Weight weight)
 	{
 		System.out.println(weight);
 		Weight wt=weightservice.saveWeight(weight);
@@ -108,12 +116,13 @@ public class UserController {
 			else
 				userresponse.setResponseCode("300");
 			
-			return userresponse;
+			return wt;
 		
 	}
 	
+	@CrossOrigin
 	@PostMapping("/excercise")
-	public UserResponse saveExcercise(@RequestBody Excercise exc)
+	public Excercise saveExcercise(@RequestBody Excercise exc)
 	{
 		Excercise excercise=excercisservice.saveExcercise(exc);
 		if(excercise!=null)
@@ -121,11 +130,12 @@ public class UserController {
 			else
 				userresponse.setResponseCode("300");
 			
-			return userresponse;
+			return excercise;
 	}
 	
+	@CrossOrigin
 	@PostMapping("/running")
-	public UserResponse saveRunning(@RequestBody Running running) {
+	public Running saveRunning(@RequestBody Running running) {
 
 		Running run=runningservice.saveRunning(running);
 		if(run!=null)
@@ -133,42 +143,36 @@ public class UserController {
 			else
 				userresponse.setResponseCode("300");
 			
-			return userresponse;
+			return run;
 		
 	}
 	
-	
+	@CrossOrigin
 	@PostMapping("/login")
 	public UserResponse validateLogin(@RequestBody User user) throws ParseException
 	{
-		
-		String username=user.username;
-		String password=user.password;
-		
+
+		String username = user.username;
+		String password = user.password;
+
 		Response response;
-		//System.out.println(username);
-		User userob=new User();
-		String res=userservice.checkUser(username, password);
-		
-		Optional userlist=userservice.displayUsers(res);
-		
+		// System.out.println(username);
+		User userob = new User();
+		String res = userservice.checkUser(username, password);
+
+		Optional userlist = userservice.displayUsers(res);
+
 		userresponse.setUser(userlist);
 		System.out.println(new Date());
-		
 
-SimpleDateFormat sdf = new SimpleDateFormat("ISODate(yyyy-MM-dd)");
-String dateWithoutTime = sdf.format(new Date());
-		
-	
+//		SimpleDateFormat sdf = new SimpleDateFormat("ISODate(yyyy-MM-dd)");
+//		String dateWithoutTime = sdf.format(new Date());
+//
+//		System.out.println("without time :" + dateWithoutTime);
+//		userresponse.setCalorielist(calservice.showCalories(res, dateWithoutTime));
 
-System.out.println("without time :"+dateWithoutTime);
-		userresponse.setCalorielist(calservice.showCalories(res,dateWithoutTime));
-		
-			
-			return userresponse;
-		
-		
-		
+		return userresponse;
+
 	}
 	
 
