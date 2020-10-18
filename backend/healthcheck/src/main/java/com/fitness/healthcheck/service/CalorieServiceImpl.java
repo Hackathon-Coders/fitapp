@@ -16,8 +16,7 @@ public class CalorieServiceImpl {
 	@Autowired
 	CalorieRepository calrepo;
 	
-	@Autowired
-	User user;
+	
 	
 	public void enterCalories(Calories cal,String id) {
 		cal.setId(id);

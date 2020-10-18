@@ -35,8 +35,8 @@ public class UserController {
 	@Autowired
 	private CalorieServiceImpl calservice;
 	
-	@Autowired
-	UserResponse userresponse;
+	
+	private UserResponse userresponse=new UserResponse();
 	
 	//private UserRepository ur;
 	
@@ -49,11 +49,17 @@ public class UserController {
 		return userlist;
 		
 	}
-	@PostMapping("/saveusers")
-	public User saveUser(@RequestBody User user) {
+	@PostMapping("/register")
+	public UserResponse saveUser(@RequestBody User user) {
 		
 		User userobj=userservice.saveUsers(user);
-		return userobj;
+		
+		if(userobj!=null)
+			userresponse.setResponseCode("200");
+		else
+			userresponse.setResponseCode("300");
+		
+		return userresponse;
 		
 		
 	}
@@ -69,10 +75,11 @@ public class UserController {
 		//System.out.println(username);
 		User userob=new User();
 		String res=userservice.checkUser(username, password);
+		
 		Optional userlist=userservice.displayUsers(res);
 		
 		userresponse.setUser(userlist);
-		userresponse.setCalorielist(calservice.showCalories(res));
+		//userresponse.setCalorielist(calservice.showCalories(res));
 		
 			
 			return userresponse;

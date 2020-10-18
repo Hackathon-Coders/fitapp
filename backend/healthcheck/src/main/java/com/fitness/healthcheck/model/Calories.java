@@ -1,6 +1,9 @@
 package com.fitness.healthcheck.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 @Document(collection="caloriescalc")
 public class Calories {
