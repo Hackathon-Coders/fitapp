@@ -30,6 +30,21 @@ public class Calories {
 	public void setCalories(String calories) {
 		this.calories = calories;
 	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public String getDescription() {
+		return description;
+	}
 	
 	
 	

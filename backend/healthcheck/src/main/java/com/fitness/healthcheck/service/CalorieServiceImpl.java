@@ -1,5 +1,6 @@
 package com.fitness.healthcheck.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,14 +19,16 @@ public class CalorieServiceImpl {
 	
 	
 	
-	public void enterCalories(Calories cal,String id) {
-		cal.setId(id);
-		calrepo.save(cal);
+	public Calories enterCalories(Calories cal) {
+		
+		Calories calorie=calrepo.save(cal);
+		return calorie;
 	}
 	
-	public List<Calories> showCalories(String id)
+	public List<Calories> showCalories(String id,String date)
 	{
-		List<Calories> callist=calrepo.showCalories(id);
+		System.out.println("Date :"+date);
+		List<Calories> callist=calrepo.showCalories(id, date);
 		return callist;
 	}
 
