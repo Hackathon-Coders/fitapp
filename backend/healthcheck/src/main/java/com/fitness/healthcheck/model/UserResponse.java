@@ -6,6 +6,7 @@ import java.util.Optional;
 public class UserResponse {
 	
 	public Optional<User> user;
+	public User userobj;
 	public List<Excercise> excerciselist;
 	public List<Calories> calorielist;
 	public String responseCode;
@@ -47,6 +48,13 @@ public class UserResponse {
 	public void setRunlist(List<Running> runlist) {
 		this.runlist = runlist;
 	}
+	public User getUserobj() {
+		return userobj;
+	}
+	public void setUserobj(User userobj) {
+		this.userobj = userobj;
+	}
+	
 	
 	
 
