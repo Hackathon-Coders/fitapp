@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.yaml.snakeyaml.tokens.Token.ID;
 
 import com.fitness.healthcheck.model.Calories;
+import com.fitness.healthcheck.model.Excercise;
+import com.fitness.healthcheck.model.Running;
 import com.fitness.healthcheck.model.User;
 import com.fitness.healthcheck.model.UserResponse;
 import com.fitness.healthcheck.model.Weight;
@@ -98,8 +100,9 @@ public class UserController {
 	@PostMapping("/weight")
 	public UserResponse saveWeight(@RequestBody Weight weight)
 	{
+		System.out.println(weight);
 		Weight wt=weightservice.saveWeight(weight);
-		
+		System.out.println(wt);
 		if(wt!=null)
 			userresponse.setResponseCode("200");
 			else
@@ -108,6 +111,32 @@ public class UserController {
 			return userresponse;
 		
 	}
+	
+	@PostMapping("/excercise")
+	public UserResponse saveExcercise(@RequestBody Excercise exc)
+	{
+		Excercise excercise=excercisservice.saveExcercise(exc);
+		if(excercise!=null)
+			userresponse.setResponseCode("200");
+			else
+				userresponse.setResponseCode("300");
+			
+			return userresponse;
+	}
+	
+	@PostMapping("/running")
+	public UserResponse saveRunning(@RequestBody Running running) {
+
+		Running run=runningservice.saveRunning(running);
+		if(run!=null)
+			userresponse.setResponseCode("200");
+			else
+				userresponse.setResponseCode("300");
+			
+			return userresponse;
+		
+	}
+	
 	
 	@PostMapping("/login")
 	public UserResponse validateLogin(@RequestBody User user) throws ParseException
