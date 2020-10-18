@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.yaml.snakeyaml.tokens.Token.ID;
 
 import com.fitness.healthcheck.model.User;
+import com.fitness.healthcheck.model.UserResponse;
 import com.fitness.healthcheck.repository.UserRepository;
+import com.fitness.healthcheck.service.CalorieServiceImpl;
 import com.fitness.healthcheck.service.UserRegImpl;
 
 @RestController
@@ -29,6 +31,12 @@ public class UserController {
 	
 	@Autowired
 	private UserRegImpl userservice;
+	
+	@Autowired
+	private CalorieServiceImpl calservice;
+	
+	@Autowired
+	UserResponse userresponse;
 	
 	//private UserRepository ur;
 	
@@ -51,18 +59,23 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public ResponseEntity<Optional> validateLogin(@RequestBody User user)
+	public UserResponse validateLogin(@RequestBody User user)
 	{
 		
 		String username=user.username;
 		String password=user.password;
+		
 		Response response;
 		//System.out.println(username);
 		User userob=new User();
 		String res=userservice.checkUser(username, password);
 		Optional userlist=userservice.displayUsers(res);
-			return new ResponseEntity<Optional>(userlist,HttpStatus.OK);
+		
+		userresponse.setUser(userlist);
+		userresponse.setCalorielist(calservice.showCalories(res));
+		
 			
+			return userresponse;
 		
 		
 		
